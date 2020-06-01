@@ -1,13 +1,18 @@
 <template >
-  <h1 v-if="isLoading"></h1>
-  <div v-else>
-    beer list
+  <h1 v-if="isLoading" class="beerlist--loading">Loading...</h1>
+  <div v-else class="beerlist--container">
+    <div v-for="beer in allBeers" :key="beer.id" class=" flex flex-1">
+      <router-link :to="{name: 'BeerDetails', params: {id: beer.id}}" class=" flex flex-1">
+        <BeerCard   :beer="beer" />
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
 
 import { mapGetters, mapActions } from 'vuex'
+import BeerCard from './BeerCard'
 
 export default {
   name: 'BeerList',
@@ -17,10 +22,18 @@ export default {
   computed: mapGetters(['allBeers', 'isLoading']),
   created () {
     this.fetchBeers()
+  },
+  components: {
+    BeerCard
   }
 }
 </script>
 
 <style lang="scss">
-
+  .beerlist--container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem;;
+  }
 </style>
