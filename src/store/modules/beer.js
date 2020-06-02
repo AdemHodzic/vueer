@@ -5,19 +5,27 @@ const BASE_URL = 'https://api.punkapi.com/v2/beers'
 const state = {
   loading: true,
   beers: [],
-  currentBeer: null
+  currentBeer: null,
+  page: 1
 }
 
 const getters = {
   allBeers: state => state.beers,
   isLoading: state => state.loading,
-  currentBeer: state => state.currentBeer
+  currentBeer: state => state.currentBeer,
+  currentPage: state => state.page
 }
 
 const actions = {
-  async fetchBeers ({ commit }) {
+  async fetchBeers ({ commit, state }) {
     commit('setLoading', true)
-    const response = await axios.get(BASE_URL)
+    const { page } = state
+    const response = await axios.get(BASE_URL, {
+      params: {
+        page
+      }
+    })
+
     commit('setBeers', response.data)
     commit('setLoading', false)
   },
@@ -27,13 +35,22 @@ const actions = {
   },
   resetCurrentBeer ({ commit }) {
     commit('setCurrentBeer', null)
+  },
+  loadNextBeers ({ commit, state, dispatch }) {
+    commit('setPage', state.page + 1)
+    dispatch('fetchBeers')
+  },
+  loadPreviousBeers ({ commit, state, dispatch }) {
+    commit('setPage', state.page - 1)
+    dispatch('fetchBeers')
   }
 }
 
 const mutations = {
   setLoading: (state, loading) => (state.loading = loading),
   setBeers: (state, beers) => (state.beers = beers),
-  setCurrentBeer: (state, currentBeer) => (state.currentBeer = currentBeer)
+  setCurrentBeer: (state, currentBeer) => (state.currentBeer = currentBeer),
+  setPage: (state, page) => (state.page = page)
 }
 
 export default {

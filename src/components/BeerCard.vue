@@ -1,8 +1,8 @@
 <template>
-  <div class="beercard">
+  <div class="beercard w-full">
     <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col">
       <img
-        class="lg:h-48 md:h-36 pt-1 w-full object-contain object-center flex-initial"
+        class="pt-1 md:w-full object-contain object-center flex-initial"
         :src="beer.image_url"
         alt="blog"
       />
@@ -50,8 +50,12 @@ export default {
 
   .beercard {
 
-    &--description {
+    img {
+      height: 48rem;
 
+      @media screen and (max-width: 799px) {
+        height: 14rem;
+      }
     }
 
     &:hover {
