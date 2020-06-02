@@ -1,8 +1,7 @@
 <template>
-<div>
-
+<div class="vueer--container">
   <Nav />
-  <div id="app bg-gray-800">
+  <div id="app">
     <router-view/>
   </div>
 </div>
@@ -21,4 +20,15 @@ export default {
 
 <style lang="scss">
 
+  .vueer--container {
+    height: 100%;
+  }
+
+  Nav {
+    height: 10%;
+  }
+
+  #app {
+    height: 90%;
+  }
 </style>

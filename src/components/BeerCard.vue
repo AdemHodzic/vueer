@@ -2,14 +2,14 @@
   <div class="beercard">
     <div class="h-full border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col">
       <img
-        class="lg:h-48 md:h-36 w-full object-cover object-center flex-initial"
+        class="lg:h-48 md:h-36 pt-1 w-full object-contain object-center flex-initial"
         :src="beer.image_url"
         alt="blog"
       />
       <div class="p-6 flex flex flex-col flex-1">
         <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1 flex-initial">{{beer.tagline}}</h2>
         <h1 class="title-font text-lg font-medium text-gray-900 mb-3 flex-initial">{{beer.name}}</h1>
-        <div class="beercard--description flex-1 justify-between">
+        <div class="beercard--description flex flex-col flex-1 justify-between">
           <p
             class="leading-relaxed mb-3"
           >{{beer.description}}</p>

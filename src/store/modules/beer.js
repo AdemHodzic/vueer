@@ -5,7 +5,7 @@ const BASE_URL = 'https://api.punkapi.com/v2/beers'
 const state = {
   loading: true,
   beers: [],
-  currentBeer: {}
+  currentBeer: null
 }
 
 const getters = {
@@ -21,9 +21,12 @@ const actions = {
     commit('setBeers', response.data)
     commit('setLoading', false)
   },
-  updateCurrentBeer ({ commit, state }, id) {
+  async updateCurrentBeer ({ commit, state }, id) {
     const beer = state.beers.find(el => el.id === id)
     commit('setCurrentBeer', beer)
+  },
+  resetCurrentBeer ({ commit }) {
+    commit('setCurrentBeer', null)
   }
 }
 
