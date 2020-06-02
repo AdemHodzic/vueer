@@ -14,7 +14,7 @@
             class="leading-relaxed mb-3"
           >{{beer.description}}</p>
           <div class="flex items-center flex-wrap">
-            <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 learn-more">
+            <a class="hover:text-black text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 learn-more">
               Learn More
               <svg
                 class="w-4 h-4 ml-2"
@@ -46,12 +46,15 @@ export default {
 <style lang="scss">
   .learn-more {
     cursor: pointer;
+    transition: color 0.1s ease-in-out;
   }
 
   .beercard {
 
+    border-radius: 8px;
+
     img {
-      height: 48rem;
+      height: 32rem;
 
       @media screen and (max-width: 799px) {
         height: 14rem;

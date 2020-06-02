@@ -13,6 +13,11 @@
                 class="ml-auto text-gray-900">{{ currentBeer.ibu }}</span></div>
             <div class="flex border-t border-b mb-6 border-gray-300 py-2"><span
                 class="text-gray-500">EBC</span><span class="ml-auto text-gray-900">{{ currentBeer.ebc }}</span></div>
+            <router-link to="/">
+              <button class="hover:bg-gray-100 text-gray-800 font-semibold py-2 px-8 ml-auto border border-gray-400 rounded shadow" @click="loadNext()">
+                Go Back
+              </button>
+            </router-link>
           </div>
           <img alt="ecommerce" class="beerdetails--image object-contain object-center rounded md:flex-1" :src="currentBeer.image_url">
         </div>
